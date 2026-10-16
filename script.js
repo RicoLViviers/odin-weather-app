@@ -29,6 +29,10 @@ function displayData(data)
     humidityText.innerText = "Humidity " + data.humidity;
 }
 
+getWeather("london").then((data) => {
+    displayData(data);
+})
+
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
