@@ -16,11 +16,24 @@ async function getWeather(location) {
 const form = document.getElementById("location-form");
 const locationInput = document.getElementById("location-input");
 
+function displayData(data)
+{
+    const tempText = document.getElementById("temp-text");
+    const tempMaxText = document.getElementById("temp-max-text");
+    const tempMinText = document.getElementById("temp-min-text");
+    const humidityText = document.getElementById("humidity-text");
+
+    tempText.innerText = "Temperature " + data.temp;
+    tempMaxText.innerText = "Max " + data.tempMax;
+    tempMinText.innerText = "Min " + data.tempMin;
+    humidityText.innerText = "Humidity " + data.humidity;
+}
+
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     getWeather(locationInput.value)
         .then((data) => {
-            console.log(data);
+            displayData(data);
         });
 })
