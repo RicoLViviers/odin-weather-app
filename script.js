@@ -14,7 +14,14 @@ async function getWeather(location) {
     return { address, temp, tempMax, tempMin, humidity };
 }
 
-getWeather("London").then((data) => 
-{
-    console.log(data); 
-});
+const form = document.getElementById("location-form");
+const locationInput = document.getElementById("location-input");
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    getWeather(locationInput)
+        .then((data) => {
+            console.log(data);
+        });
+})
